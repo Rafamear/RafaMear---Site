@@ -1,0 +1,346 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Aqum', sans-serif;
+}
+
+html
+{
+  background: url('Imagens/Wall9.png');
+  min-height:100%;
+  background-size: cover;
+  background-position: center;
+}
+
+body {
+  font-size: 100%;
+}
+
+@font-face {
+  font-family: Aqum;
+  src: url('Aqum.ttf')
+}
+
+/*======================Cabecalho======================*/
+
+.Cabecalho {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.BarraNavegacao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 50px;
+}
+
+.TxtNavegacao {
+  color: rgb(243, 243, 243);
+  font-family: Aqum;
+  font-size: 1.3em;
+  margin-left: 20px;
+  margin-right: 20px;
+  transition: 0.6s;
+  -webkit-mask: linear-gradient(rgba(255, 255, 255, 1) 0 0) text;
+  mask: linear-gradient(rgba(255, 255, 255, 1) 0 0) text;
+  backdrop-filter: blur(5px);
+}
+
+.TxtNavegacao.dark {
+  color: rgb(20, 20, 20);
+}
+
+.TxtNavegacao:hover {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 2.3em;
+}
+
+.IcoModo {
+  width: 36px;
+  height: 36px;
+}
+
+.ModoCheckBox {
+  opacity: 0;
+}
+
+.labelModo {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/*======================Conteudo======================*/
+
+.Conteudo {
+  width: 100vw;
+  height: calc(100vh - 60px);
+  margin-top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*======================Blocos de Paginas======================*/
+
+.CaixasContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.Caixa {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  border-radius: 15px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  margin: 10px;
+  width: 100px;
+  height: 100px;
+}
+
+.Caixa:hover {
+  transform: scale(1.1) rotate(10deg);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.CaixasContainer:hover .Caixa:not(:hover) {
+  transform: scale(0.9);
+  opacity: 0.5;
+  filter: blur(1px);
+}
+
+.CaixaIcon {
+  width: 72px;
+  height: 72px;
+}
+
+.TituloCaixa {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  width: 100%;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: bottom 0.3s, opacity 0.3s;
+  opacity: 0;
+}
+
+.TituloCaixa.dark {
+  color: rgb(20, 20, 20);
+}
+
+.Caixa:hover .TituloCaixa {
+  bottom: 90px;
+  opacity: 1;
+  transition: bottom 0.3s, opacity 0.3s, transform 0.3s;
+  transform: translateY(-10px);
+}
+
+/*======================Paginas======================*/
+
+.Pagina {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  border-radius: 20px;
+  width: 1200px;
+  height: 700px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+
+.zoom-page {
+  transform: scale(1);
+  transition: transform 0.5s, opacity 0.5s;
+  opacity: 0;
+}
+
+.PaginaBarraSuperior {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  width: 100%;
+  height: 40px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.PaginaNome {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.PaginaTitulo{
+  margin-left: 10px;
+  font-size: 1.2em;
+}
+
+.IcoContexto {
+  position: relative;
+  text-align: right;
+}
+
+.Fechar,
+.FecharHover {
+  position: absolute;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+  width: 20px;
+  height: 20px;
+  top: -9px;
+  right: 15px;
+}
+
+.FecharAcao {
+  position: absolute;
+  background: #ff3a3a;
+  top: -20px;
+  right: 0px;
+  z-index: 1;
+  width: 50px;
+  height: 40px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.PaginaConteudo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100% - 40px);
+  overflow: auto;
+  padding: 10px;
+}
+
+.Titulo {
+  font-size: 1.6em;
+  color: #fff;
+}
+
+.Texto {
+  font-size: 1em;
+  color: #fff;
+}
+
+/*===========Pagina Sites===========*/
+
+.ContainerCaixaSites {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.CaixaSite {
+  position: relative; /* Mantenha a posição relativa para conter elementos absolutos */
+  margin: 10px;
+}
+
+.CaixaSiteImg {
+  height: 155px;
+  width: 260px;
+  border-radius: 10px;
+  border: 3px solid rgb(20, 20, 20);
+}
+
+.CaixaDescricao {
+  position: absolute; /* Mantenha a posição absoluta para ficar em cima da imagem */
+  top: 0; /* Alinhe no topo da caixa pai */
+  left: 0; /* Alinhe à esquerda da caixa pai */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 155px;
+  width: 260px;
+  border-radius: 10px;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 1) 10%, transparent);
+  transition: opacity 0.5s, backdrop-filter 0.1s;
+  backdrop-filter: blur(0px);
+  opacity: 0;
+}
+
+.CaixaDescricao:hover {
+  opacity: 1;
+  backdrop-filter: blur(5px);
+}
+
+.CaixaSiteNome {
+  font-size: 1.2em;
+  margin: 5px;
+}
+
+.CaixaSiteDescricao {
+  font-size: 0.9em;
+  text-align: center;
+}
+
+.BotaoSite {
+  border-radius: 10px;
+  border: 3px solid rgb(20, 20, 20);
+  padding: 5px 15px;
+  background-color: transparent;
+  color: rgb(20, 20, 20);
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  margin-top: 15px;
+}
+
+.BotaoSite:hover {
+  background-color: rgb(20, 20, 20);
+  color: #fff;
+}
+
+/*===========Pagina Sites===========*/
+
+
+/*===========Pagina Rainmeter===========*/
+
+/*===========Pagina Rainmeter===========*/
+
+
+/*===========Pagina Ferramentas===========*/
+
+/*===========Pagina Ferramentas===========*/
+
+
+/*===========Pagina Wallpapers===========*/
+.WallpaperCaixa {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.WallpaperImg {
+  width: 250px;
+  border-radius: 15px;
+  border: 3px solid rgb(20, 20, 20);
+}
+/*===========Pagina Wallpapers===========*/
+
+
+/*===========Pagina Portifolio===========*/
+
+/*===========Pagina Portifolio===========*/
